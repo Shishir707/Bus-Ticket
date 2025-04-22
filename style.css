@@ -80,10 +80,26 @@
   }
 
   #routes{
-    display: flex;
-    gap: 20px;
-    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px , 40px;
+    text-align: left;
+    padding: 5px;
     color: red;
+  }
+
+  #routes p {
+    margin: 0;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+
+  #bd{
+    background-color:black;
+    padding: 5px;
+    color: red;
+    border-radius: 10px 20px 30px;
   }
   
   
