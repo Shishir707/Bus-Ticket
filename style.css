@@ -50,7 +50,7 @@
   
   
   footer {
-    background-color: #222;
+    background-color: lightslategray;
     color: white;
     text-align: center;
     padding: 15px 0;
@@ -85,7 +85,7 @@
     gap: 10px , 40px;
     text-align: left;
     padding: 5px;
-    color: red;
+    color:rgb(22, 22, 21);
   }
 
   #routes p {
@@ -96,13 +96,64 @@
   }
 
   #bd{
-    background-color:black;
+    background-color:#b887e3;
     padding: 5px;
-    color: red;
+    color:black;
     border-radius: 10px 20px 30px;
   }
   
   #data{
     text-align: center;
   }
+
+  label{
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    background-color: #b887e3
+  }
+  #date{
+    color: #b887e3;
+    font-size: large;
+    font-weight: 600;
+  }
+  
+  #from{
+    color:black;
+    font-size: large;
+    font-weight: 600;  
+  }
+
+  #to{
+    color:black;
+    font-size: large;
+    font-weight: 600;  
+  }
+
+  #btn{
+    background-color: green;
+    padding: 10px 20px;
+    border: None;
+    border-radius: 8px;
+    color: #f2f2f2;
+    size-adjust: 10px;
+    font-weight: 600;
+    cursor: pointer;
+
+  }
+  #btn:hover{
+    background-color: red;
+    transform: scaleX(1);
+  }
+
+  #btn:active{
+    background-color: #b887e3;
+    transform: scaleX(1);
+  }
+
+  #btn:disabled{
+    background-color: #333;
+    cursor: not-allowed;
+  }
+
   
