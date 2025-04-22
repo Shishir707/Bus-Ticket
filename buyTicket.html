@@ -24,7 +24,7 @@
         </div>
         <h2>Easy Booking, Smooth Travels, Happy You.</h2><br><br>
     
-        <label for="From">From:</label>
+        <label for="from">From:</label>
         <select id="from" name="from">
             <option value="Dhaka">Dhaka</option>
             <option value="Cox's Bazar">Cox's Bazar</option>
@@ -32,7 +32,7 @@
             <option value="Khulna">Khulna</option>
         </select>
 
-        <label for="From">To:</label>
+        <label for="to">To:</label>
         <select id="to" name="to">
             <option value="Dhaka">Dhaka</option>
             <option value="Cox's Bazar">Cox's Bazar</option>
@@ -41,12 +41,15 @@
         </select>
         <label for="date"> Date:</label>
         <input type="date" id="date"><br><br>
-        <button onclick="search()" id="btn">Search</button><br><br>
-        
+        <button id="btn" onclick="search()">Search</button>
+        <br>
+        <p id="eror"></p>
+        <p id="success"></p><br>
+
     </section>
     <footer>
         <p>&copy; 2025 My Sample Website | All rights reserved.</p>
       </footer>
-    
+    <script src="script.js"></script>
 </body>
 </html>
