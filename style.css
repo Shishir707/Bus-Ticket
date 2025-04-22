@@ -37,7 +37,7 @@
   }
   
   .navbar a:hover {
-    color: #ffcc00;
+    color: red;
   }
   
   
@@ -56,4 +56,27 @@
     bottom: 0;
     width: 100%;
   }
+
+  .photo {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .photo img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .photo img:hover {
+    transform: scale(1.05);
+  }
+
+  
+  
   
