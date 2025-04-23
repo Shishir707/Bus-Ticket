@@ -73,7 +73,8 @@ function green() {
     const layout = document.getElementById("seatLayout");
     layout.innerHTML = "";
 
-    let seatHTML = `<h3>Select Your Seat (Green Line)</h3><div class="bus-layout">`;
+    let seatHTML = `<h3>Select Your Seat</h3><div class="bus-layout">
+                    <h2>Green Line</h2>`;
 
     
     const rows = ["A","B","C","D","E","F","G","H"];
@@ -93,7 +94,8 @@ function srTravel() {
     const layout = document.getElementById("seatLayout");
     layout.innerHTML = "";
 
-    let seatHTML = `<h3>Select Your Seat</h3><div class="bus-layout">`;
+    let seatHTML = `<h3>Select Your Seat</h3><div class="bus-layout">
+                    <h2>SR Travel</h2>`;
 
     
     const rows = ["A","B","C","D","E","F","G","H"];
@@ -117,6 +119,7 @@ function selectSeat(seatId) {
     }
     selectedSeat = seatId;
     document.getElementById(seatId).classList.add("selected");
+    console.log(seatId);
 }
 
 function confirmBooking() {
@@ -124,12 +127,24 @@ function confirmBooking() {
         Swal.fire("Please select a seat!");
         return;
     }
-
-    Swal.fire({
+    var name = prompt("Enter Your Name:");
+    var pass = parseInt(prompt("Enter Passward:"));
+    if (name == null || pass == null){
+        Swal.fire({
+            icon: "error",
+            title: "Invalid!",
+            text: "Enter Name & Password for book Ticket.",
+        });
+        return;
+    }
+    else{
+        Swal.fire({
         icon: "success",
         title: "Booked!",
-        text: `Seat ${selectedSeat} booked successfully.`,
+        text: `Seat ${selectedSeat} booked for ${name} successfully.`,
+        footer: "You have to pay BDT. TK 2000"
     });
+    }
 
     document.getElementById(selectedSeat).classList.remove("selected");
     document.getElementById(selectedSeat).classList.add("occupied");
