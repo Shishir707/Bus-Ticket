@@ -69,25 +69,80 @@ function search(){
     }
 }
 
-function green(){
-    const layout = document.getElementById("seatLayout").value ;
-    layout.innerHTML="";
+function green() {
+    const layout = document.getElementById("seatLayout");
+    layout.innerHTML = "";
 
-    let seatHTML = `<h3>Select Your Seat<h3> <div id="busLayout">`
+    let seatHTML = `<h3>Select Your Seat (Green Line)</h3><div class="bus-layout">`;
 
-    const row =  ["A","B","C","D"];
-
-    for (let r =0; r<row.length; r++){
-        for (let c =0; c<8; c++){
-            const seatID = row[r]+c;
-
-            seatHTML +=`<button class="seat" id=${seatID} onClick="selectSeat(${seatID})">${seatID}</button>`
-
+    
+    const rows = ["A","B","C","D","E","F","G","H"];
+    for (let r = 0; r < rows.length; r++) {
+        for (let c = 1; c <= 4; c++) {
+            const seatId = rows[r] + c;
+            seatHTML += `<button class="seat" id="${seatId}" onclick="selectSeat('${seatId}')">${seatId}</button>`;
         }
-
-        seatHTML +="<br><br>"
+        seatHTML += "<br>";
     }
-    seatHTML+= `</div> <br> <button onClick="confirm()" id="btn">Confirm Purchase</button>`
+
+    seatHTML += `</div><br><button onclick="confirmBooking()" id="btn">Confirm Booking</button>`;
+    layout.innerHTML = seatHTML;
 }
+
+function srTravel() {
+    const layout = document.getElementById("seatLayout");
+    layout.innerHTML = "";
+
+    let seatHTML = `<h3>Select Your Seat</h3><div class="bus-layout">`;
+
+    
+    const rows = ["A","B","C","D","E","F","G","H"];
+    for (let r = 0; r < rows.length; r++) {
+        for (let c = 1; c <= 4; c++) {
+            const seatId = rows[r] + c;
+            seatHTML += `<button class="seat" id="${seatId}" onclick="selectSeat('${seatId}')">${seatId}</button>`;
+        }
+        seatHTML += "<br>";
+    }
+
+    seatHTML += `</div><br><button onclick="confirmBooking()" id="btn">Confirm Booking</button>`;
+    layout.innerHTML = seatHTML;
+}
+
+let selectedSeat = null;
+
+function selectSeat(seatId) {
+    if (selectedSeat) {
+        document.getElementById(selectedSeat).classList.remove("selected");
+    }
+    selectedSeat = seatId;
+    document.getElementById(seatId).classList.add("selected");
+}
+
+function confirmBooking() {
+    if (!selectedSeat) {
+        Swal.fire("Please select a seat!");
+        return;
+    }
+
+    Swal.fire({
+        icon: "success",
+        title: "Booked!",
+        text: `Seat ${selectedSeat} booked successfully.`,
+    });
+
+    document.getElementById(selectedSeat).classList.remove("selected");
+    document.getElementById(selectedSeat).classList.add("occupied");
+    selectedSeat = null;
+}
+
+
+
+
+
+
+
+
+
 
 
