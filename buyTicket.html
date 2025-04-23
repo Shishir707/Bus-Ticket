@@ -25,7 +25,7 @@
         <h2>Easy Booking, Smooth Travels, Happy You.</h2><br><br>
     
         <label for="from">From:</label>
-        <select id="from" name="from">
+        <select id="from" name="from">           
             <option value="Dhaka">Dhaka</option>
             <option value="Cox's Bazar">Cox's Bazar</option>
             <option value="Rajshahi">Rajshahi</option>
@@ -42,14 +42,18 @@
         <label for="date"> Date:</label>
         <input type="date" id="date"><br><br>
         <button id="btn" onclick="search()">Search</button>
-        <br>
+        <br><br>
         <p id="eror"></p>
-        <p id="success"></p><br>
+        <br>
+        <div id="busList"></div>
+        <br><br><br>
 
     </section>
     <footer>
         <p>&copy; 2025 My Sample Website | All rights reserved.</p>
       </footer>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

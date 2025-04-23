@@ -156,14 +156,32 @@
     cursor: not-allowed;
   }
 
-  #eror{
-    color: red;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  #busList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
-  #success{
-    color: green;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+.innerStyle {
+    border: 3px solid red;
+    margin: 10px;
+    padding: 2px;
+    background-color:white;
+    border-radius: 10px;
+    box-shadow: 4px 5px 3px grey;
+}
+
+.innerStyle img {
+    width: 300px;
+}
+
+.innerStyle h2{
+  color: black;
+}
+
+.innerStyle div{
+  background-color:bisque
+}
+
+  
 
   
