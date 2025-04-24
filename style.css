@@ -242,6 +242,7 @@
   grid-template-columns: 1fr 2fr 1fr 2fr;
   justify-content: center;
   text-align: center;
+  overflow: auto;
 }
 
 .accept img{
