@@ -229,9 +229,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-left: 20px;
+  overflow: auto;
 }
 
 .instruction img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
