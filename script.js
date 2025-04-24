@@ -35,7 +35,8 @@ function search(){
                                 <h2>Green Line</h2>
                                 Dhaka -----------------> Cox's Bazar
                                 <p>08:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;04:00 AM</p><br>
-                                <p id="price"> TK. BDT 2000/=</p><br>
+                                <p id="price"> TK. BDT 2000/=</p>
+                                <p id="vat">including VAT</p><br>
                                 <button onClick="green()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(greenLine);
@@ -48,7 +49,8 @@ function search(){
                                 <h2>SR Travels</h2>
                                 Dhaka -----------------> Cox's Bazar
                                 <p>10:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;06:00 AM</p><br>
-                                <p id="price"> TK. BDT 1800/=</p><br>
+                                <p id="price"> TK. BDT 1800/=</p>
+                                <p id="vat">including VAT</p><br>
                                 <button onClick="srTravel()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(srTravel);
@@ -61,7 +63,8 @@ function search(){
                                 <h2>Shyamoli Paribahan</h2>
                                 Dhaka -----------------> Cox's Bazar
                                 <p>11:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;07:00 AM</p><br>
-                                <p id="price"> TK. BDT 1800/=</p><br>
+                                <p id="price"> TK. BDT 1800/=</p>
+                                <p id="vat">including VAT</p><br>
                                 <button onClick="shyamoli()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(shyamoli);
