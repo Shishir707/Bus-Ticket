@@ -158,7 +158,7 @@
 
   #busList {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .innerStyle {
@@ -212,4 +212,12 @@
   pointer-events: none;
 }
 
+#busList{
+  overflow: auto;
+}
+
+#price{
+  color: rgb(42, 39, 39);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
   
