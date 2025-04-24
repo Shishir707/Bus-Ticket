@@ -50,7 +50,7 @@ function search(){
                                 Dhaka -----------------> Cox's Bazar
                                 <p>10:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;06:00 AM</p><br>
                                 <p id="vat">Fare Tk. BDT. (including VAT)</p>
-                                <p id="price">1800</p><br>
+                                <p id="price">2000</p><br>
                                 <button onClick="srTravel()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(srTravel);
@@ -64,7 +64,7 @@ function search(){
                                 Dhaka -----------------> Cox's Bazar
                                 <p>11:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;07:00 AM</p><br>
                                 <p id="vat">Fare Tk. BDT. (including VAT)</p>
-                                <p id="price">1800</p><br>
+                                <p id="price">2000</p><br>
                                 <button onClick="shyamoli()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(shyamoli);
