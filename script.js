@@ -89,7 +89,7 @@ function search(){
 
 function green() {
     const layout = document.getElementById("seatLayout");
-    layout.innerHTML = "";
+    
 
     let seatHTML = `<h3>Select Your Seat</h3><div class="bus-layout">
                     <h2>Green Line</h2>`;
