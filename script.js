@@ -35,8 +35,8 @@ function search(){
                                 <h2>Green Line</h2>
                                 Dhaka -----------------> Cox's Bazar
                                 <p>08:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;04:00 AM</p><br>
-                                <p id="price"> TK. BDT 2000/=</p>
-                                <p id="vat">including VAT</p><br>
+                                <p id="vat">Fare Tk. BDT. (including VAT)</p>
+                                <p id="price">2000</p><br>
                                 <button onClick="green()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(greenLine);
@@ -49,8 +49,8 @@ function search(){
                                 <h2>SR Travels</h2>
                                 Dhaka -----------------> Cox's Bazar
                                 <p>10:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;06:00 AM</p><br>
-                                <p id="price"> TK. BDT 1800/=</p>
-                                <p id="vat">including VAT</p><br>
+                                <p id="vat">Fare Tk. BDT. (including VAT)</p>
+                                <p id="price">1800</p><br>
                                 <button onClick="srTravel()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(srTravel);
@@ -63,8 +63,8 @@ function search(){
                                 <h2>Shyamoli Paribahan</h2>
                                 Dhaka -----------------> Cox's Bazar
                                 <p>11:00 PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;07:00 AM</p><br>
-                                <p id="price"> TK. BDT 1800/=</p>
-                                <p id="vat">including VAT</p><br>
+                                <p id="vat">Fare Tk. BDT. (including VAT)</p>
+                                <p id="price">1800</p><br>
                                 <button onClick="shyamoli()" id="btn" >Book Now</button>
                                 </div>`;
             oldContent.appendChild(shyamoli);
@@ -89,7 +89,7 @@ function search(){
 
 function green() {
     const layout = document.getElementById("seatLayout");
-    
+    layout.innerHTML = "";
 
     let seatHTML = `<h3>Select Your Seat</h3><div class="bus-layout">
                     <h2>Green Line</h2>`;
@@ -150,19 +150,34 @@ function shyamoli() {
     layout.innerHTML = seatHTML;
 }
 
-let selectedSeat = null;
+let selectedSeats = [];
 
 function selectSeat(seatId) {
-    if (selectedSeat) {
-        document.getElementById(selectedSeat).classList.remove("selected");
+    const seat = document.getElementById(seatId);
+    const index = selectedSeats.indexOf(seatId);
+
+    if (index > -1) {
+        seat.classList.remove("selected");
+        selectedSeats.splice(index, 1);
+    } else {
+        if (selectedSeats.length >= 4) {
+            Swal.fire({
+                icon: "error",
+                title: "Sorry!",
+                text: "You can only select up to 4 seats.",
+            });
+            return;
+        }
+        seat.classList.add("selected");
+        selectedSeats.push(seatId);
     }
-    selectedSeat = seatId;
-    document.getElementById(seatId).classList.add("selected");
-    console.log(seatId);
+   
 }
 
+
 function confirmBooking() {
-    if (!selectedSeat) {
+    const price = document.getElementById("price").innerText ; 
+    if (!selectedSeats) {
         Swal.fire("Please select a seat!");
         return;
     }
@@ -180,8 +195,8 @@ function confirmBooking() {
         Swal.fire({
         icon: "success",
         title: "Booked!",
-        text: `Seat ${selectedSeat} booked for ${name} successfully.`,
-        footer: "You have to pay BDT. TK 1800"
+        text: `Seat ${selectedSeats} booked for ${name} successfully.`,
+        footer: `You have to pay BDT. TK ${selectedSeats.length*price}`
     });
     }
 
