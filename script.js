@@ -206,6 +206,63 @@ function confirmBooking() {
 }
 
 
+function addCart(button){
+    let busCard = button.closest(".busDiv");
+
+    let availabilityText = Array.from(busCard.querySelectorAll("#availability"))
+    .find(p => p.innerText.startsWith("Availability"))
+    .innerText;
+    let result = availabilityText.split(":")[1].trim(); 
+    
+    
+
+    console.log(result);
+    if (result == "Yes"){
+        const name = prompt("Enter Your Full Name:");
+        const phone = prompt("Enter Your Phone Number:");
+
+        const validPrefixes = ["013", "014", "015", "016", "017", "018", "019"];
+
+        console.log(name);
+        console.log(phone);
+
+        
+        if (!name || !phone || phone.length !== 11 || !validPrefixes.includes(phone.substring(0, 3))) {
+    
+            Swal.fire({
+                icon: "error",
+                title: "Invalid!",
+                text: "Enter Valid Name & Phone Number for rent Bus.",
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: '🚌 Booking Confirmed!',
+            html: `<b>Dear ${name}, bus has been reserved.</b><br>We\'ll contact you shortly to confirm in details.`,
+            icon: 'success',
+            showConfirmButton: true,
+            confirmButtonText: 'Great!',
+            confirmButtonColor: '#28a745'
+        });
+
+    } 
+    else {
+        Swal.fire({
+            title: '🚌 Bus Not Available',
+            html: 'Unfortunately, the bus you selected is currently unavailable. Please choose another option or check back later.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#f44336'
+        });
+    }
+}
+
+
+
+        
+
+
 
 
 
