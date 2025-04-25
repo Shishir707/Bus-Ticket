@@ -256,13 +256,46 @@
   background-color: rgb(102, 100, 100);
 }
 
-.maintenance {
-  color: #ff3e00;
+.rent{
+  color: #0b7707;
   font-size: 3em;
   text-align: center;
 }
-#maintenanceText {
+#rentText {
   color: black;
   font-size: 1.2em;
   text-align: center;
+  font-size: smaller;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.rentBus{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: auto;
+}
+.busDiv{
+  border: 3px solid red;
+  margin: 25px;
+  padding: 30px;
+  background-color:white;
+  border-radius: 10px;
+  box-shadow: 4px 5px 3px grey;
+  text-align: center;
+}
+
+.rentBus img{
+  height: 250px;
+  width: 250px;
+}
+
+#busInfo{
+  color: rgb(89, 0, 243);
+}
+
+#details{
+  color: black;
+  text-align: left;
+  font-weight: 600;
 }
