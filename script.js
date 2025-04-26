@@ -88,6 +88,8 @@ function search(){
 }
 
 function green() {
+    document.getElementById("paymentInfo").textContent = "";
+    document.getElementById("passengerInfo").textContent = "";
     const layout = document.getElementById("seatLayout");
     layout.innerHTML = "";
 
@@ -109,6 +111,8 @@ function green() {
 }
 
 function srTravel() {
+    document.getElementById("paymentInfo").textContent = "";
+    document.getElementById("passengerInfo").textContent = "";
     const layout = document.getElementById("seatLayout");
     layout.innerHTML = "";
 
@@ -130,6 +134,8 @@ function srTravel() {
 }
 
 function shyamoli() {
+    document.getElementById("paymentInfo").textContent = "";
+    document.getElementById("passengerInfo").textContent = "";
     const layout = document.getElementById("seatLayout");
     layout.innerHTML = "";
 
@@ -176,7 +182,11 @@ function selectSeat(seatId) {
 
 
 function confirmBooking() {
-    const price = document.getElementById("price").innerText ; 
+    console.log("Confirm Booking function started");
+    const price = document.getElementById("price").innerText ;
+    const from = document.getElementById("from").value ;
+    const to = document.getElementById("to").value ;
+    const date = document.getElementById("date").value 
     if (!selectedSeats) {
         Swal.fire("Please select a seat!");
         return;
@@ -194,15 +204,52 @@ function confirmBooking() {
     else{
         Swal.fire({
         icon: "success",
-        title: "Booked!",
-        text: `Seat ${selectedSeats} booked for ${name} successfully.`,
-        footer: `You have to pay BDT. TK ${selectedSeats.length*price}`
+        title: "Reserved!",
+        html:`<b>Seat ${selectedSeats} booked for ${name} successfully.</b><br><br>Please Confirm Your Payment.`,
+        footer: `You have to pay BDT. TK ${selectedSeats.length*price}.`
     });
     }
 
-    document.getElementById(selectedSeat).classList.remove("selected");
-    document.getElementById(selectedSeat).classList.add("occupied");
+    const bookingInfo = {
+        from: from,
+        to: to,
+        date: date,
+        name: name,
+        seats: selectedSeats,
+        total: selectedSeats.length * price
+    };
+
+    localStorage.setItem("lastBooking", JSON.stringify(bookingInfo));
+
+    selectedSeats.forEach(seatId => {
+        const seatElement = document.getElementById(seatId);
+        if (seatElement) {
+            seatElement.classList.remove("selected");
+            seatElement.classList.add("occupied");
+        }
+    });
+
     selectedSeat = null;
+
+    const lastBooking = JSON.parse(localStorage.getItem("lastBooking"));
+
+    const oldContent = document.getElementById("passengerInfo");
+            oldContent.textContent = "";
+
+            const newDiv = document.createElement("div")
+            newDiv.classList.add("innerStyle");
+            newDiv.innerHTML=`<h2>Pasenger Information</h2>
+                            <h4>From : ${lastBooking.from}</h4>
+                            <h4>To : ${lastBooking.to}</h4>
+                            <h4>Date : ${lastBooking.date}</h4>
+                            <h4>Name : ${lastBooking.name}</h4>
+                            <h4>Seats : ${lastBooking.seats.join(",")}</h4>
+                            <h4>Total Fare : ${lastBooking.total}</h4>
+                            <p>Please Confirm Payment to Booked Your Selected Seat<br><br>
+                            <button onClick="payment()" id="btn">PROCEED TO PAYMENT</button><br><br>`;
+                            
+
+            oldContent.appendChild(newDiv);
 }
 
 
@@ -257,6 +304,93 @@ function addCart(button){
         });
     }
 }
+let selectedMethod = ""; 
+function payment() {
+    const lastBooking = JSON.parse(localStorage.getItem("lastBooking"));
+    const oldContent = document.getElementById("paymentInfo");
+    oldContent.textContent = "";
+
+    const newDiv = document.createElement("div");
+    newDiv.classList.add("innerStyle");
+    newDiv.innerHTML = `
+        <h2>Amount: ${lastBooking.total}</h2>
+        <section class="paymentPartner">
+            <div>
+                <button class="payBtn" onclick="selectMethod('Bkash')">
+                <img src="bkash.png" alt="Bkash">
+                </button> 
+                
+            </div>
+            <div>
+                <button class="payBtn" onclick="selectMethod('Rocket')">
+                <img src="rocket.jpg" alt="Rocket">
+                </button> 
+                
+            </div>
+            <div>
+                <button class="payBtn" onclick="selectMethod('Nagad')">
+                <img src="nagad.png" alt="Nagad">
+                </button> 
+                
+            </div>
+            <div>
+                <button class="payBtn" onclick="selectMethod('Upay')">
+                <img src="upay.png" alt="Upay">
+                </button> 
+                
+            </div><br>
+            <p>By Clicking PAY NOW , You are agrreing to Bus Ticket's Terms & Condition & Privacy Policy.</p>
+            <div class="proceed">
+                <button id="btn" onclick="payNow()">PAY NOW</button>
+            </div><br><br>
+        </section>
+    `;
+    oldContent.appendChild(newDiv);
+}
+
+function selectMethod(method) {
+    selectedMethod = method; 
+    Swal.fire(`You selected ${method} as your payment method.`);
+}
+
+function payNow() {
+    if (selectedMethod === "") {
+        Swal.fire("Please select a payment method first!");
+    } else {
+        Swal.fire({
+            icon: 'success',
+            title: 'Payment Successful!',
+            html: `You paid using ${selectedMethod}. Thank you!<br><br>
+            <button onclick="downloadTicket()" id="btn">Download Ticket</button>`
+        });
+        
+    }
+}
+
+function downloadTicket() {
+    const booking = JSON.parse(localStorage.getItem("lastBooking"));
+    const ticketContent = `
+        -------- Bus Ticket --------
+        Name: ${booking.name}
+        From: ${booking.from}
+        To: ${booking.to}
+        Date: ${booking.date}
+        Seats: ${booking.seats.join(", ")}
+        Total Fare: BDT ${booking.total}
+        Payment Method: ${selectedMethod}
+        ----------------------------
+        Thank you for booking with us!
+    `;
+
+    const blob = new Blob([ticketContent], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `Ticket_${booking.name}.txt`;
+    link.click();
+}
+
+
+
 
 
 

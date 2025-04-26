@@ -179,7 +179,7 @@
 }
 
 .innerStyle div{
-  background-color:bisque
+  background-color:rgb(207, 244, 227)
 }
 
 
@@ -298,4 +298,14 @@
   color: black;
   text-align: left;
   font-weight: 600;
+}
+
+.paymentPartner{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.paymentPartner img{
+  height: 50px;
+  width: 50px;
 }
