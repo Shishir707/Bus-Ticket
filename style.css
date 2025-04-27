@@ -248,8 +248,8 @@
 }
 
 .accept img{
-  height: 120px;
-  width: 120px;
+  height: 50px;
+  width: 70px;
 }
 
 .text{
@@ -275,7 +275,7 @@
 .rentBus{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  overflow: hidden;
+  overflow: auto;
 }
 .busDiv{
   border: 3px solid red;
