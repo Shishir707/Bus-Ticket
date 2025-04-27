@@ -350,7 +350,7 @@ function payment() {
 
 function selectMethod(method) {
     selectedMethod = method; 
-    Swal.fire(`You selected ${method} as your payment method.`);
+    Swal.fire(`${method} Selected✔`);
 }
 
 function payNow() {
@@ -360,7 +360,7 @@ function payNow() {
         Swal.fire({
             icon: 'success',
             title: 'Payment Successful!',
-            html: `You paid using ${selectedMethod}. Thank you!<br><br>
+            html: `Paid Succesful using ${selectedMethod}. Thank you!<br><br>
             <button onclick="downloadTicket()" id="btn">Download Ticket</button>`
         });
         
