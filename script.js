@@ -24,6 +24,15 @@ function search(){
         return;
     }
 
+    else if (new Date(date) < new Date()){
+        Swal.fire({
+            icon: "error",
+            title: "Invalid!",
+            text: "Selected date is in the past!",
+        });
+        return;
+    }
+
     else if (from == "Dhaka" && to == "Cox's Bazar"){
         const oldContent = document.getElementById("busList");
             oldContent.textContent = "";
